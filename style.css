@@ -349,6 +349,14 @@ body {
     padding-bottom: 0;
   }
 
+  .menu__item:hover, .submenu__item:hover {
+    background-color: var(--bg-accent);
+  }
+
+  .menu__item:active, .submenu__item:active {
+    background-color: var(--bg-menu);
+  }
+
   .menu__item-more:after {
     top: 17px;
     right: auto;
