@@ -1,0 +1,365 @@
+:root {
+  --color-text-accent: #EB5757;
+  --color-text: #FAFAFA;
+  --bg-menu: #131417;
+  --bg-accent: #252830;
+  --border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  --border-mobile: 1px solid #131417;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  min-width: 376px;
+  width: 100%;
+}
+
+.content-wrap {
+  background-color: var(--bg-menu);
+}
+
+.content {
+  width: 100%;
+  min-height: 100vh;
+  object-fit: cover;
+  display: block;
+}
+
+.header {
+  position: relative;
+  background-color: var(--bg-menu);
+  width: 100%;
+  padding: 13px 130px 13px 122px;
+  color: var(--color-text);
+  box-shadow: 0px 4px 4px rgba(19, 20, 23, 0.9);
+}
+
+.header__wrapper {
+  max-width: 1188px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__menu {
+  display: flex;
+  gap: 76px;
+  justify-content: space-between;
+  margin-left: 40px;
+}
+
+.menu__submenu,
+.submenu__low-submenu {
+  display: none;
+}
+
+.header__burger-btn {
+  background-color: transparent;
+  border: none;
+  display: none;
+}
+
+.header__burger-btn:hover {
+  opacity: 0.7;
+}
+
+.header__contact-item {
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+.header__contact:hover {
+  opacity: 0.7;
+}
+
+.menu__link {
+  padding: 35px 0;
+}
+
+.menu__link:hover {
+  color: var(--color-text-accent);
+}
+
+.link-more,
+.item-more {
+  position: relative;
+}
+
+.link-more:after {
+  content: url(img/drop.svg);
+  position: absolute;
+  top: 32px;
+  right: -22px;
+  transition: all 0.5s ease-out;
+}
+
+.menu__item:hover .link-more:after,
+.menu__item:active .link-more:after {
+  transform: rotate(90deg);
+  top: 35px;
+}
+
+.submenu__item .submenu__link.link-more:after {
+  transform: rotate(0);
+  top: 5px;
+  right: -25px;
+}
+
+.submenu__item:hover .link-more:after,
+.submenu__item:active .link-more:after {
+  transform: rotate(90deg);
+  top: 8px;
+}
+
+.menu__item:hover>.menu__submenu,
+.menu__item:active>.menu__submenu {
+  display: block;
+}
+
+.submenu__item:hover>.submenu__low-submenu,
+.submenu__item:active>.submenu__low-submenu {
+  display: block;
+}
+
+.menu__submenu {
+  background-color: var(--bg-accent);
+  border-radius: 0px 0px 8px 8px;
+  position: absolute;
+  top: 53px;
+  left: -20px;
+}
+
+.menu__submenu:before {
+  content: "";
+  position: absolute;
+  border: 14px solid transparent;
+  border-bottom: 14px solid var(--bg-accent);
+  top: -28px;
+  left: 47px;
+}
+
+.submenu__item {
+  border-bottom: var(--border-bottom);
+  padding: 8px 38px 8px 18px;
+}
+
+.submenu__item:last-child {
+  border-bottom: none;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.submenu__item:hover {
+  background-color: var(--bg-menu);
+}
+
+.submenu__link {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px;
+  padding: 8px 0;
+}
+
+.submenu__low-submenu {
+  background-color: var(--bg-accent);
+  border-radius: 8px;
+  width: 180px;
+  position: absolute;
+  top: -42px;
+  right: -202px;
+}
+
+.submenu__low-submenu:before {
+  content: "";
+  position: absolute;
+  border: 14px solid transparent;
+  border-right: 14px solid var(--bg-accent);
+  left: -28px;
+  bottom: 8px;
+}
+
+.submenu__low-submenu .submenu__item:first-child:hover {
+  border-radius: 8px 8px 0px 0px;
+}
+
+@media (max-width: 1300px) {
+  .content {
+    object-position: 30%;
+  }
+
+  .header {
+    padding-left: 22px;
+    padding-right: 34px;
+  }
+
+  .header__menu {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header__burger-btn {
+    display: block;
+  }
+
+  .header__nav {
+    order: 3;
+  }
+
+  .header__menu {
+    background-color: var(--bg-menu);
+    position: absolute;
+    width: 375px;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    top: 80px;
+    bottom: -100vh;
+    right: 0;
+    /*transform: translatex(375px); --мобильное меню скрыто по умолчанию*/
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  /*класс для активного мобильного меню*/
+  .header__menu_active {
+    transform: translatex(0);
+  }
+
+  .header__menu_active:before {
+    content: "";
+    background: rgba(19, 20, 23, 0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -100vw;
+    z-index: -1;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .menu__item,
+  .submenu__item {
+    background-color: var(--bg-accent);
+    border-bottom: var(--border-mobile);
+    padding: 20px;
+    padding-left: 0;
+  }
+
+  .menu__link,
+  .submenu__link {
+    width: 100%;
+    padding: 20px;
+    height: 64px;
+  }
+
+  .menu__link:hover,
+  .menu__link:active {
+    color: var(--color-text);
+  }
+
+  .menu__item:active,
+  .submenu__item:active {
+    background-color: var(--bg-menu);
+  }
+
+  .item-more:active {
+    padding-bottom: 0;
+  }
+
+  .menu__item-more:after {
+    top: 17px;
+    right: auto;
+    margin-left: 10px;
+  }
+
+  .submenu__item:last-child {
+    border-radius: 0;
+    border-bottom: 1px solid var(--bg-accent);
+  }
+
+  .submenu__low-submenu .submenu__item:last-child {
+    border-bottom: 1px solid var(--bg-accent);
+  }
+
+  .menu__submenu,
+  .submenu__low-submenu {
+    position: static;
+    width: 375px;
+    border-radius: 0;
+  }
+
+  /*стили для треугольника на планшете и мобильном*/
+
+  .link-more:after {
+    top: 18px;
+    right: -6px
+  }
+
+  .menu__item:active .link-more:after {
+    transform: rotate(90deg);
+    top: 20px;
+  }
+
+  .submenu__item .submenu__link.link-more:after {
+    transform: rotate(0);
+    top: 16px;
+    right: -6px;
+  }
+
+  .submenu__item:active .link-more:after {
+    transform: rotate(90deg);
+    top: 20px;
+  }
+
+  .menu__item:active>.menu__submenu {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .submenu__item:active>.submenu__low-submenu {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .menu__submenu:before,
+  .submenu__low-submenu:before {
+    border: none;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .header__menu,
+  .menu__submenu,
+  .submenu__low-submenu {
+    width: 100%;
+  }
+
+  .menu__item, .submenu__item {padding-right: 0;}
+
+}
