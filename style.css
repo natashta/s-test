@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 2 version
+*/
+
 :root {
   --color-text-accent: #EB5757;
   --color-text: #FAFAFA;
@@ -10,7 +17,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 ul {
@@ -42,8 +50,14 @@ body {
 .content {
   width: 100%;
   min-height: 100vh;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
+}
+
+.menu__submenu,
+.submenu__low-submenu {
+  display: none;
 }
 
 .header {
@@ -52,27 +66,33 @@ body {
   width: 100%;
   padding: 13px 130px 13px 122px;
   color: var(--color-text);
-  box-shadow: 0px 4px 4px rgba(19, 20, 23, 0.9);
+  -webkit-box-shadow: 0px 4px 4px rgba(19, 20, 23, 0.9);
+          box-shadow: 0px 4px 4px rgba(19, 20, 23, 0.9);
 }
 
 .header__wrapper {
   max-width: 1188px;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .header__menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 76px;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-left: 40px;
-}
-
-.menu__submenu,
-.submenu__low-submenu {
-  display: none;
 }
 
 .header__burger-btn {
@@ -85,13 +105,17 @@ body {
   opacity: 0.7;
 }
 
-.header__contact-item {
-  margin-right: 15px;
-  vertical-align: middle;
+.header__contact {
+  font-weight: 500;
 }
 
 .header__contact:hover {
   opacity: 0.7;
+}
+
+.header__contact-item {
+  margin-right: 15px;
+  vertical-align: middle;
 }
 
 .menu__link {
@@ -112,24 +136,28 @@ body {
   position: absolute;
   top: 32px;
   right: -22px;
+  -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
 }
 
 .menu__item:hover .link-more:after,
 .menu__item:active .link-more:after {
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
   top: 35px;
 }
 
 .submenu__item .submenu__link.link-more:after {
-  transform: rotate(0);
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
   top: 6px;
   right: -26px;
 }
 
 .submenu__item:hover .link-more:after,
 .submenu__item:active .link-more:after {
-  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
   top: 8px;
 }
 
@@ -214,7 +242,8 @@ body {
 
 @media (max-width: 1300px) {
   .content {
-    object-position: 30%;
+    -o-object-position: 30%;
+       object-position: 30%;
   }
 
   .header {
@@ -233,20 +262,29 @@ body {
   }
 
   .header__nav {
-    order: 3;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
   }
 
   .header__menu {
     background-color: var(--bg-menu);
     position: absolute;
     width: 375px;
-    flex-direction: column;
-    justify-content: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     gap: 0;
     top: 80px;
     bottom: -100vh;
     right: 0;
-    transform: translatex(375px); /*--мобильное меню скрыто по умолчанию*/
+    -webkit-transform: translatex(375px);
+            transform: translatex(375px); /*--мобильное меню скрыто по умолчанию*/
+    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     z-index: 1;
   }
@@ -254,7 +292,8 @@ body {
   /*класс для активного мобильного меню*/
   .header__menu_active {
     display: block;
-    transform: translatex(0);
+    -webkit-transform: translatex(0);
+            transform: translatex(0);
   }
 
   .header__menu_active:before {
@@ -267,9 +306,6 @@ body {
     left: -100vw;
     z-index: -1;
     -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
     transition: 0.3s;
   }
 
@@ -280,9 +316,16 @@ body {
     background-color: var(--bg-accent);
     border-bottom: var(--border-mobile);
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .menu__link,
@@ -321,6 +364,10 @@ body {
     border-bottom: 1px solid var(--bg-accent);
   }
 
+  .submenu__low-submenu .submenu__item:first-child:hover {
+    border-radius: 0;
+  }
+
   .menu__submenu,
   .submenu__low-submenu {
     position: static;
@@ -328,32 +375,31 @@ body {
     border-radius: 0;
   }
 
-  /*стили для треугольника на планшете и мобильном*/
+  /*стили для треугольника на планшете и мобильном.
+  Для того, чтобы треугольник повернулся, в активном пункте меню добавляется класс item-active */
 
   .link-more:after {
     top: 18px;
     right: 200px;
   }
 
-  .menu__item_active .link-more:after {
-    transform: rotate(180deg);
+  .header__menu .item-active .link-more:after {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
     top: 20px;
   }
 
   .submenu__item .submenu__link.link-more:after {
-    transform: rotate(0);
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
     top: 16px;
     right: 20px;
   }
 
-  .submenu__item_active .link-more:after {
-    transform: rotate(180deg);
-    top: 20px;
-  }
-
   .menu__item:hover .link-more:after,
   .menu__item:active .link-more:after {
-    transform: rotate(0);
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
     top: 18px;
   }
 
